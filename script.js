@@ -8,7 +8,9 @@ document.addEventListener("DOMContentLoaded", function(){
     //Def crearTarjeta
     function crearTarjeta(registro){
 
-
+        function caps(string) {
+            return string[0].toUpperCase() + string.slice(1);
+        }
         /* 
         <div class="imagenTarjeta">
                 <img src= ${API + registro.image}></img>
@@ -21,10 +23,10 @@ document.addEventListener("DOMContentLoaded", function(){
         <div class="tarjeta">
         
             <div class="descTarjeta">
-                <p class="monName"> Nombre: ${registro.name} </p>
-                <p class="monSize"> Tamaño: ${registro.size}  </p>
-                <p class ="monType"> Tipo: ${registro.type} </p>
-                <p class ="monAlignment"> Alineación: ${registro.alignment}</p>
+                <p class="monName"> Name: ${registro.name} </p>
+                <p class="monSize"> Size: ${registro.size}  </p>
+                <p class ="monType"> Type: ${caps(registro.type)} </p>
+                <p class ="monAlignment"> Alignment: ${caps(registro.alignment)}</p>
             </div>
         <div>
         `
@@ -38,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function(){
     .then(data =>{
         console.log(data);
         document.getElementById("titulo").innerHTML += `
-        <p>Cantidad de monstruos: ${data.count}</p>
+        <p>Number of monsters: ${data.count}</p>
         `
         for (let i of data.results){
             let monsterURL = API + i.url;
